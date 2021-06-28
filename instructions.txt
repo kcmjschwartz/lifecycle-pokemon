@@ -4,11 +4,11 @@ Who's that Pokemon?
 - This challenge will require you to utilize React's lifecycle methods
 
 Suggested work flow
-- Find a way to darken the image of the pokemon
+- Find a way to darken the image of the pokemon - done
 - Create a Timer that counts down from 10 to 0
-    - Make sure the timer does not start until the Start button is pushed
-    - Make sure the timer does not go into the negatives
-- Once the timer reaches 0 the pokemon image should be undarkened and the name should be displayed
+    - Make sure the timer does not start until the Start button is pushed - Done
+    - Make sure the timer does not go into the negatives - Done
+- Once the timer reaches 0 the pokemon image should be undarkened and the name should be displayed - Done
 - Find a way to make the game restart each time the button is pushed (you should not need to refresh the page)
 
 -If you finish early see what else you can add to this!

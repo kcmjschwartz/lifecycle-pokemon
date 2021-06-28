@@ -9,6 +9,7 @@ class PokeFetch extends Component {
       pokeInfo: '',
       pokeSprite: '',
       pokeName: '',
+      timerCount: 0
     }
   }
 
@@ -29,14 +30,33 @@ class PokeFetch extends Component {
       .catch((err) => console.log(err))
   }
 
+  timerSet(){
+    this.setState({
+      timerCount: 10
+    }, this.timerCountdown())    
+    }
+ 
+  timerCountdown(){
+    this.countdown = setInterval(() =>{
+      this.setState({
+        timerCount: this.state.timerCount -1
+      });
+      
+    },1000) }
+
+  componentDidUpdate(){
+    if(this.state.timerCount <=0){
+      clearInterval(this.countdown);}
+  }
+
   render() {
     return (
       <div className={'wrapper'}>
-        <button className={'start'} onClick={() => this.fetchPokemon()}>Start!</button>
-        <h1 className={'timer'} >Timer Display</h1>
+        <button className={'start'} onClick={() => {this.timerSet(); this.fetchPokemon()}}>Start!</button>
+        <h1 className={'timer'} style= {{visibility: this.state.timerCount === 0 ? "hidden" : "visible"}}>{this.state.timerCount}</h1>
         <div className={'pokeWrap'}>
-          <img className={'pokeImg'} src={this.state.pokeSprite} />
-          <h1 className={'pokeName'}>{this.state.pokeName}</h1>
+          <img className={'pokeImg'} src={this.state.pokeSprite} style= {{filter: `brightness(${this.state.timerCount > 0 ? 10 :100}%)`}} />
+          <h1 className={'pokeName'} style= {{visibility: this.state.timerCount > 0 ? "hidden" : "visible"}}>{this.state.pokeName}</h1>
         </div>
       </div>
     )
